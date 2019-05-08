@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-	# before_action :get_single_post, only: :show
+	before_action :get_single_post, only: [:show, :edit, :update]
 	
 	def new
 		@post = Post.new()
@@ -8,7 +8,7 @@ class PostsController < ApplicationController
 	end
 
 	def show
-		get_single_post
+		# get_single_post
 		# byebug
 		@comment = Comment.new
 		@comments = @post.comments
@@ -32,7 +32,16 @@ class PostsController < ApplicationController
     	redirect_to posts_path
 	end
 
+	def update
+		@post.update(post_params)
+		@post.save
+		redirect_to @post
+	end
 
+	def destroy
+		Post.destroy(params[:id])
+		redirect_to posts_path
+	end
 
 	private
 
