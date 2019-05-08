@@ -3,7 +3,9 @@
 one:
   post: one
   user: one
+  content: MyString
 
 two:
   post: two
   user: two
+  content: MyString

@@ -10,6 +10,9 @@ class PostsController < ApplicationController
 	def show
 		get_single_post
 		# byebug
+		@comment = Comment.new
+		@comments = @post.comments
+		# byebug
 	end
 
 	def index

@@ -1,6 +1,5 @@
 <h1><%= @post.title%></h1>
 
-<br>
 <div>
 	<p>
 		<%= @post.content %>
@@ -16,15 +15,24 @@
 		</ul>
 		<% end %>
 	</div>
-	<!-- <div>
-		<h3>Liked By:</h3>
-		<ul>
-			<%# @users_who_liked_this_post.each do |user| %>
-			<li>
-				<%# user.name %>
-			</li>
-			<%# end %>
-		</ul>
-	</div> -->
+	
+
+
+	<%= form_for @comment do |f| %>
+		<%= f.label :content %>
+		<%= f.text_field :content, :size => 150 %>
+		<%= f.hidden_field :post_id, value: @post.id %>
+		<%= f.hidden_field :user_id, value: @post.user_id %>
+		<%= f.submit%>
+	<% end %>
+
+	<ul>	
+		<% @comments.each do |comment| %>
+		<p>
+			<%= comment.user.username %> - <%= comment.content %>
+		</p>
+		<% end %>
+	</ul>
+
 </div>
 

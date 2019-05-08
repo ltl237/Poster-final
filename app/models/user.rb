@@ -1,8 +1,8 @@
 class User < ApplicationRecord
 	has_many :likings
-	has_many :taggings
+	has_many :comments
 	has_many :posts, through: :likings
-
+	has_many :posts, through: :comments
 	validates_presence_of :username
   	validates_uniqueness_of :username
 
