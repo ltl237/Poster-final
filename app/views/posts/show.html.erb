@@ -1,0 +1,30 @@
+<h1><%= @post.title%></h1>
+
+<br>
+<div>
+	<p>
+		<%= @post.content %>
+	</p>
+	<%# button_to "Like", new_liking_path, params: {'post[id]' => @post.id, 'post[user_id]' => @post.user_id}, method: :get%>
+	<%= button_to "Like", new_like_path, params: {post_id: @post.id, user_id: @post.user_id}, method: :get %>
+	<p><%= @post.likes%> Likes</p>
+	<div>
+		<h3>Liked by:</h3>
+		<% @post.likings.each do |liking| %>
+		<ul>
+			<%= liking.user.username %>
+		</ul>
+		<% end %>
+	</div>
+	<!-- <div>
+		<h3>Liked By:</h3>
+		<ul>
+			<%# @users_who_liked_this_post.each do |user| %>
+			<li>
+				<%# user.name %>
+			</li>
+			<%# end %>
+		</ul>
+	</div> -->
+</div>
+

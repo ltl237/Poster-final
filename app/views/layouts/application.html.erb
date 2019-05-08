@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PosterProject</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <% if @logged_in %>
+      Hello, <%= @logged_in_user.username.titleize %>!
+      <%= button_to "Log out", log_out_path, method: :delete %>
+      <%= link_to "All Posts", posts_path %><br>
+      <%= link_to "All Users", users_path %>
+    <% else %>
+      <%= link_to "Log In", new_login_path %><br>
+      <%= link_to "Sign Up", new_user_path %>
+    <% end %>
+    <%= yield %>
+
+    <% if @errors && @errors.any? %>
+      <ul class="errors">
+        <% @errors.each do |error| %>
+        <li>
+          <%= error %>
+        </li>
+        <% end %>
+      </ul>
+      <% end %>
+  </body>
+</html>

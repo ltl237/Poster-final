@@ -1,0 +1,11 @@
+<h1>Here is a list of all posts on Poster!</h1>
+
+<%= button_to "Create a new Post", new_post_path, method: :get %>
+
+<ul>
+	<% @posts.each do |post| %>
+	<li>
+		<%= link_to post.title, post %>
+	</li>
+	<% end %>
+</ul>
