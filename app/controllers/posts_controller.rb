@@ -17,11 +17,12 @@ class PostsController < ApplicationController
 
 	def index
 		@posts = Post.all
+
 	end
 
 	def create
 		unless @logged_in
-      		set_notification("You're not logged in 🖕")
+      		set_notification("You're not logged in !")
       		redirect_to new_login_path
       	return
     	end
@@ -39,8 +40,9 @@ class PostsController < ApplicationController
 	end
 
 	def destroy
+		# byebug
 		Post.destroy(params[:id])
-		redirect_to posts_path
+		render :index
 	end
 
 	private

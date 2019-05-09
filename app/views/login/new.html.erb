@@ -1,13 +1,17 @@
-<%= form_tag login_index_path do %>
-   <ul>
-    <li>
-      <%= label_tag :username %>
-      <%= text_field_tag :username %>
-    </li>
-    <li>
-      <%= label_tag :password %>
-      <%= password_field_tag :password %>
-    </li>
-  </ul>
-  <%= submit_tag "Login" %>
-<% end %>
+<div id="welcome"><h1>Welcome to Deez Nuts</h1></div>
+
+<div class="wrapper" id="newloginform">
+  <%= form_tag login_index_path do %>
+     <ul>
+        <%= label_tag :username %>
+        <%= text_field_tag :username %>
+        <br>
+        <%= label_tag :password %>
+        <%= password_field_tag :password %>
+    </ul>
+    <%= submit_tag("Login", "class"=>"loginsubmit") %><%= button_to("Sign Up", new_user_path, :class =>"loginsubmit", method: :get) %>
+  <% end %>
+
+  <%# link_to("Sign Up", "class"=>"loginsubmit"), new_user_path, method: :get %>
+
+</div>

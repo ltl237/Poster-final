@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>PosterProject</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,13 +12,21 @@
 
   <body>
     <% if @logged_in %>
-      Hello, <%= @logged_in_user.username.titleize %>!
-      <%= button_to "Log out", log_out_path, method: :delete %>
-      <%= link_to "All Posts", posts_path %><br>
-      <%= link_to "All Users", users_path %>
+      <div id="greeting">
+        Hello, <%= @logged_in_user.username.titleize %>!
+        <%= button_to "Log out", log_out_path, :id => "logoutbutton",method: :delete %>
+        <%= link_to "All Posts", posts_path %><br>
+        <%= link_to "All Users", users_path %>
+      </div>
     <% else %>
-      <%= link_to "Log In", new_login_path %><br>
-      <%= link_to "Sign Up", new_user_path %>
+
+      <!-- <div class="wrapper newlogin">
+        <%# link_to "Log In", new_login_path %>
+        <%# link_to "Sign Up", new_user_path %>
+      </div> -->
+      
+
+
     <% end %>
     <%= yield %>
 

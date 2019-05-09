@@ -1,8 +1,11 @@
 <h1><%= @post.title%></h1>
 
-<%= button_to "Edit", edit_post_path, method: :get%>
-<%= button_to "Delete", @post, method: :delete%>
 
+
+<% if @logged_in_user.id == @post.user_id %>
+	<%= button_to "Delete", @post, method: :delete%>
+	<%= button_to "Edit", edit_post_path, method: :get%>
+<% end %>
 <div>
 	<p>
 		<%= @post.content %>

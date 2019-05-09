@@ -35,9 +35,9 @@ class UsersController < ApplicationController
 		# @user_destroyed = User.find(params[:id]).destroy
 		User.find(params[:id]).destroy
 
-		# log_out_user
+		log_out_user
 		# if @user_destroyed
-		redirect_to users_path
+		redirect_to new_login_path
 		# end
 	end
 

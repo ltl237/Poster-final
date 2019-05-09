@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+
+	skip_before_action :verify_authenticity_token
 	before_action :setup
 
 	def get_notification
@@ -24,10 +26,12 @@ class ApplicationController < ActionController::Base
 
 		if @logged_in
 			@logged_in_user_id = session[:user_id]
+			# byebug
     		@logged_in_user = User.find(@logged_in_user_id)
 	  		# @logged_in_user = User.find(session[:id])
-
+	  	# else
+	  	# 	redirect_to new_login_path
 		end
-
+		@notification = get_notification
 	end
 end
