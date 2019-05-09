@@ -1,8 +1,17 @@
-<h1>Welcome, <%= @user.username %>!</h1>
-<h3>AKA <%= @user.full_name %></h3>
+<div class="basicforpadding">
+	<h1>Welcome, <%= @user.username %>!</h1>
+	<h3>AKA <%= @user.full_name %></h3>
 
-<div>
-	<p>
-		<%= @user.bio %>
-	</p>
+	<div>
+		<p>
+			Bio: <%= @user.bio %>
+		</p>
+	</div>
+
+	<div>
+		<h1>Posts You've Liked:</h1>
+		<% @user.likings.each do |liking|%>
+			<%= link_to liking.post.title, post_path%><br>
+		<% end %>
+	</div>
 </div>

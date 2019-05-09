@@ -45,7 +45,7 @@ class PostsController < ApplicationController
 	def destroy
 		# byebug
 		Post.destroy(params[:id])
-		render :index
+		redirect_to posts_path
 	end
 
 	private

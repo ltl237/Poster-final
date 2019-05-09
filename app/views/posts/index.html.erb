@@ -12,14 +12,17 @@
 
 
 
-<!-- <ul>
-	<% @posts.each do |post| %>
-		<%= link_to post.title, post %> 
-	<% end %>
-</ul> -->
+
 
 
 <table class="table table-bordered table-striped" id="sortable">
+	<thead>
+		<th>
+			Post Time
+		</th>
+		<th>Post Title</th>
+		<th>Post Content</th>
+	</thead>
   <tbody>
     <% @posts.each do |post| %>
       <tr data-item-id=<%= "#{post.id}" %> class="item">
