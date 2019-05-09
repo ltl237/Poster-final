@@ -14,6 +14,10 @@
  *= require_self
  */
 
+body {
+	/*padding: 5px;*/
+}
+
 .newlogin {
 	text-align: left;
 	border: 1px solid blue;
@@ -52,7 +56,7 @@
 	color: red;
 }
 
-#welcome {
+.welcome {
 	text-align: center;
 /*    box-shadow: 4px 5px 8px 3px #92b6dc;
 */	margin: 0 auto;
@@ -60,21 +64,60 @@
 	display: block;
 	padding: 2%;
 	font-family: helvetica;
-	border-radius: 5px;
-
+	border-bottom: 1px solid #92b6dc;
 }
 
 
 #logoutbutton {
 	display: block;
-	margin: right;
-	text-align: right;
-	font-size: 20px;
+	position: fixed;
+	right: 10px;
+	top: 5px;
+	height: 5%;
+
 }
 
+.navbar {
+	/*height: 15px;*/
 
+	background-color: #92b6dc;
+}
 
+#newpostbutton {
+	font-size: 12px;
+	float: top;
+}
 
+#newpost {
+	padding: 2%;
+}
 
+#timeofpost {
+	font-size: 9px;
+}
 
+#post_content {
+	height: 200px;
+	width: 300px;
+	border-radius: 5px;
+}
+
+#post_title {
+	border-radius: 5px;
+	vertical-align: middle;
+	height: 25px;
+}
+
+#editdelete {
+	display: inline-block;
+
+}
+
+#comment_content {
+	display: inline-block;
+	border-radius: 5px;
+	height: 25px;
+	vertical-align: middle;
+
+}
 

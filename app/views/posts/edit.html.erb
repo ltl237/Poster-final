@@ -1,11 +1,18 @@
-<%= form_for @post do |f| %>
-	<%= f.label :title %>
-	<%= f.text_field :title %>
-	<br>
-	<%= f.label :content %>
-	<%= f.text_field :content %>
-	<br>
-	<%= f.hidden_field :user_id, value: @post.user_id %>
-	<%= f.hidden_field :likes, value: 0 %>
-	<%= f.submit %>
-<% end %>
+<h2 style="padding: 2%;">Edit Post</h2>
+
+<div id="newpost">
+	<%= form_for @post do |f| %>
+		<%# f.label :title %>
+		<%= f.text_area :title %>
+		<br>
+		<%# f.label :content %><br>
+		<%# f.text_field :content %>
+		<%= f.text_area :content%>
+		<br>
+		<%= f.hidden_field :user_id, value: @post.user_id %>
+		<%= f.hidden_field :likes, value: 0 %>
+		<%= f.submit %>
+	<% end %>
+	<%= button_to "Delete", @post, method: :delete%>
+</div>
+

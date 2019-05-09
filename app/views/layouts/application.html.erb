@@ -13,10 +13,39 @@
   <body>
     <% if @logged_in %>
       <div id="greeting">
-        Hello, <%= @logged_in_user.username.titleize %>!
-        <%= button_to "Log out", log_out_path, :id => "logoutbutton",method: :delete %>
-        <%= link_to "All Posts", posts_path %><br>
-        <%= link_to "All Users", users_path %>
+
+        <nav class="navbar navbar-expand-lg bg-light">
+          <!-- <a class="navbar-brand" href="<% @user %>"><%= @logged_in_user.username%></a> -->
+          <%= link_to(@logged_in_user.username, @user, :class =>"navbar-brand", method: :get)%>
+          <!-- <%# button_to("Sign Up", new_user_path, :class =>"loginsubmit", method: :get) %> -->
+          
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item active">
+                <!-- <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> -->
+                <%= link_to("Home", posts_path, :class => "navbar-brand")  %>
+              </li>
+              <li class="nav-item">
+                <!-- <a class="nav-link" href="#">Features</a> -->
+                <%= link_to("Users", users_path, :class => "navbar-brand")  %>
+              </li>
+              
+              
+            </ul>
+          </div>
+        </nav>
+                <!-- <a class="nav-link" href="#">Pricing</a> -->
+                <%= button_to "Log out", log_out_path, :id => "logoutbutton",method: :delete %>
+
+
+
+        <!-- Hello, <%= @logged_in_user.username.titleize %>!
+        <%# button_to "Log out", log_out_path, :id => "logoutbutton",method: :delete %>
+        <%# link_to "All Posts", posts_path %><br>
+        <%# link_to "All Users", users_path %> -->
       </div>
     <% else %>
 

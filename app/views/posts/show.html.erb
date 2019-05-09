@@ -1,14 +1,16 @@
-<h1><%= @post.title%></h1>
+<h1><%= link_to @post.title, edit_post_path%></h1>
 
 
+<!-- <div id="editdelete">
+	<% if @logged_in_user.id == @post.user_id %>
+		<%= button_to "Edit", edit_post_path, method: :get%>
+		<%= button_to "Delete", @post, method: :delete%>
+	<% end %>
+</div> -->
 
-<% if @logged_in_user.id == @post.user_id %>
-	<%= button_to "Delete", @post, method: :delete%>
-	<%= button_to "Edit", edit_post_path, method: :get%>
-<% end %>
 <div>
 	<p>
-		<%= @post.content %>
+		<%= link_to @post.content, edit_post_path %>
 	</p>
 	<%# button_to "Like", new_liking_path, params: {'post[id]' => @post.id, 'post[user_id]' => @post.user_id}, method: :get%>
 	<%= button_to "Like", new_like_path, params: {post_id: @post.id, user_id: @post.user_id}, method: :get %>
@@ -25,8 +27,8 @@
 
 
 	<%= form_for @comment do |f| %>
-		<%= f.label :content %>
-		<%= f.text_field :content, :size => 150 %>
+		<%# f.label :content %>
+		<%= f.text_area :content, width: 200, height: 15; %>
 		<%= f.hidden_field :post_id, value: @post.id %>
 		<%= f.hidden_field :user_id, value: @post.user_id %>
 		<%= f.submit%>

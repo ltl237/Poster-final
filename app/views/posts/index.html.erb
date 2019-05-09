@@ -1,11 +1,40 @@
-<h1>Here is a list of all posts on Poster!</h1>
+<div class="welcome"> 
+	<h1 style="display: inline-block; margin:0;">Post Feed </h1>
+	<%# link_to("New Post", new_post_path, :class => "newpost" ) %>
+	<%= button_to "New Post", new_post_path, :id => "newpostbutton",method: :get %> 
+<%# link_to '<span class="glyphicon glyphicon-eye-open"></span>', new_post_path %>
 
-<%= button_to "Create a new Post", new_post_path, method: :get %>
 
-<ul>
+<%# link_to '<i class="glyphicon glyphicon-th-large"></i> New Post'.html_safe, new_post_path, class: 'btn btn-default' %>
+
+
+</div>
+
+
+
+<!-- <ul>
 	<% @posts.each do |post| %>
-	<li>
 		<%= link_to post.title, post %> 
-	</li>
 	<% end %>
-</ul>
+</ul> -->
+
+
+<table class="table table-bordered table-striped" id="sortable">
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr data-item-id=<%= "#{post.id}" %> class="item">
+      	<td>
+      		<%= "#{time_ago_in_words(post.created_at)} ago"%>
+      		<p id="timeofpost"><%=post.created_at%></p>
+      	</td>
+        <td>
+        	<%= link_to post.title, post_path(post), :class => 'btn btn-default pull-right' %>
+
+        </td>
+          <td>
+          	<%= link_to post.content, post_path(post), :class => 'btn btn-default pull-right' %>
+          </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

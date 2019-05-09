@@ -12,12 +12,15 @@ class PostsController < ApplicationController
 		# byebug
 		@comment = Comment.new
 		@comments = @post.comments
+
+
 		# byebug
 	end
 
 	def index
-		@posts = Post.all
-
+		@posts = Post.all.order(created_at: :desc)
+		# @posts.order(created_at: :desc)
+		@user = User.find(session[:user_id])
 	end
 
 	def create
