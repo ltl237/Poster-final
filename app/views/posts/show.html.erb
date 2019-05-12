@@ -60,6 +60,7 @@
 				<% content_array.each_with_index do |word, index|%>
 					<% if username_array.include?(word)%>
 						<%= link_to word, user_path(User.find_by(username: word)) %>
+						<% @users_who_commented << User.find_by(username: word)%>
 					<% else %>
 						<%= word %>
 					<% end %>

@@ -13,6 +13,7 @@ class PostsController < ApplicationController
 		@comment = Comment.new
 		@comments = @post.comments
 		@users = User.all
+		@users_who_commented = []
 		# byebug
 		# byebug
 	end

@@ -14,4 +14,27 @@
 			<%= link_to liking.post.title, post_path(liking.post)%><br>
 		<% end %>
 	</div>
+
+	<div>
+		<h1>Posts You've Been Tagged In:</h1>
+		<%# username_array = User.all.map{|user| user.username}%>
+		<% tagged = [] %>
+		<% @comments.each do |comment|%>
+			<% content_array = comment.content.split(' ') %> 
+				<% content_array.each_with_index do |word, index|%>
+					<% if @user.username.include?(word)%>
+						<%#= link_to comment.post.title, post_path(Post.find(comment.post.id)) %>
+						<% tagged << comment.post%>
+						<%# @users_who_commented << User.find_by(username: word)%>
+					<%# else %>
+						<%#= word %>
+					<% end %>
+				<% end %>
+		<% end %>
+		<ul>
+		<% tagged.uniq.each do |tagging| %>
+			<li><%= link_to tagging.title, post_path(Post.find(tagging.id)) %></li>
+		<% end %>
+	</ul>
+	</div>
 </div>

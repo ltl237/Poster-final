@@ -13,9 +13,10 @@ class UsersController < ApplicationController
 
 	end
 
-	# def show
-	# 	get_user
-	# end
+	def show
+		get_user
+		@comments = Comment.all
+	end
 
 	def create
 		@user = User.create(user_params)
