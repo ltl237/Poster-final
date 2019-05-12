@@ -11,7 +11,7 @@
 	<div>
 		<h1>Posts You've Liked:</h1>
 		<% @user.likings.each do |liking|%>
-			<%= link_to liking.post.title, post_path%><br>
+			<%= link_to liking.post.title, post_path(liking.post)%><br>
 		<% end %>
 	</div>
 </div>

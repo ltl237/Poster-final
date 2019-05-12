@@ -1,6 +1,11 @@
 <div class="basicforpadding" id="fullshowpage">
+	<% if @post.user_id == session[:user_id]%>
 		<h1><%= link_to @post.title, edit_post_path%></h1>
 		<h2>By <%= @post.user.username%></h2>
+	<% else %>
+		<h1><%= link_to @post.title, post_path%></h1>
+		<h2>By <%= @post.user.username%></h2>
+	<% end %>
 
 	<!-- <div id="editdelete">
 		<% if @logged_in_user.id == @post.user_id %>
@@ -11,7 +16,11 @@
 
 	<div>
 		<p id="postcontent">
-			<%= link_to @post.content, edit_post_path %>
+			<% if @post.user_id == session[:user_id]%>
+				<%= link_to @post.content, edit_post_path %>
+			<% else %>
+				<%= link_to @post.content, post_path %>
+			<% end %>
 		</p>
 		<%= button_to "Like", new_like_path, params: {post_id: @post.id, user_id: @post.user_id}, method: :get %>
 		
@@ -41,7 +50,27 @@
 		<ul>	
 			<% @comments.each do |comment| %>
 			<!-- <p> -->
-				<%= link_to comment.user.username, user_path %> - <%= comment.content %> 
+				<%= link_to comment.user.username, user_path(comment.user) %> - <%# comment.content %>
+				<% content_array = comment.content.split(' ') %> 
+			
+				<% username_array = User.all.map{|user| user.username}%>
+
+				
+
+				<% content_array.each_with_index do |word, index|%>
+					<% if username_array.include?(word)%>
+						<%= link_to word, user_path(User.find_by(username: word)) %>
+					<% else %>
+						<%= word %>
+					<% end %>
+				<% end %>
+
+
+
+				<%#byebug%>
+				<%# if comment.content.include(User.find_by())%>
+
+				<%# end %>
 				<p style="font-size: 10px;"><%= "#{time_ago_in_words(comment.created_at)} ago"%></p>
 			<!-- </p> -->
 			<% end %>

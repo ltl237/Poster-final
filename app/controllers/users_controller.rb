@@ -30,11 +30,20 @@ class UsersController < ApplicationController
 	end
 
 	def destroy
-		# byebug
+		
 
 		# @user_destroyed = User.find(params[:id]).destroy
+		Liking.where(user_id:params[:id]).each do |liking|
+
+			if liking.post.likes > 0
+				liking.post.update(likes: liking.post.likes-1)
+				# liking.post.likes -= 1
+			end
+			# byebug
+		end
 		User.find(params[:id]).destroy
 
+		Post.where(user_id:params[:id]).destroy_all
 		log_out_user
 		# if @user_destroyed
 		redirect_to new_login_path

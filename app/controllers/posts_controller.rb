@@ -12,8 +12,8 @@ class PostsController < ApplicationController
 		# byebug
 		@comment = Comment.new
 		@comments = @post.comments
-
-
+		@users = User.all
+		# byebug
 		# byebug
 	end
 
